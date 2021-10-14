@@ -11,41 +11,25 @@
     - Username
     - User Profile Image URL
 */
-const getImages = async (pageNumber, imagesPerPage) => {
 
-    return await fetch(`https://api.unsplash.com/photos?page=${pageNumber};per_page=${imagesPerPage};client_id=DdjQErY4NabMYW4pWNn2JEhVAvgVE6MdGgFcAvgXNxA`)
+const getImages = async (imagesPerFetch) => {
+
+    return await fetch(`https://api.unsplash.com/photos/random?count=${imagesPerFetch}&client_id=mUtTp675q_8PIvE1kxbrwFxM4gWCwOmk8Dg-FItst4M`)
         .then( (response) => {
             return response.json();
         })
-      .then( async (data) => {
+      .then( (data) => {
 
         let information = {}
-        for(let i = 0; i < imagesPerPage; i++){
-
-            let statisticsDictionary = await fetch(`https://api.unsplash.com/photos/${data[i].id}?client_id=iGeXjIvO4B_aNDWvxdUWtOlsbp9DCmWevWB9ClumQWA`)
-            .then( (res) => {
-                return res.json();
-            })
-            .then( (d) => {
-
-                return {
-                    likes: d.likes,
-                    downloads: d.downloads,
-                    views: d.views
-                }
-
-            }).catch(function(err) {
-                
-                console.log(err)
-            });
+        for(let i = 0; i < imagesPerFetch; i++){
 
             information[i] = {
                 id: data[i].id,
                 url: data[i].urls.thumb,
                 fullSize: data[i].urls.small,
-                likes: statisticsDictionary.likes,
-                views: statisticsDictionary.views,
-                downloads: statisticsDictionary.downloads,
+                likes: data[i].likes,
+                views: data[i].views,
+                downloads: data[i].downloads,
                 name: data[i].user.name,
                 username: data[i].username,
                 userProfileImage: data[i].user.profile_image.large
@@ -62,14 +46,13 @@ const getImages = async (pageNumber, imagesPerPage) => {
     
 }
 
-
 /*
     Creating a template function for image addition
 */
-const addElements = async (pageNumber, imagesPerPage) => {
+const addElements = async (pageNumber, imagesPerFetch) => {
 
-    let data = await getImages(pageNumber, imagesPerPage)
-    for(let i = 0; i < imagesPerPage; i++){
+    let data = await getImages(imagesPerFetch)
+    for(let i = 0; i < imagesPerFetch; i++){
         document.getElementById("images-container").innerHTML += 
         `
             <section class='image-card'>
@@ -93,14 +76,18 @@ const addElements = async (pageNumber, imagesPerPage) => {
     }
 }
 
-const loadElements = async (pageNumber, imagesPerPage) => {
+/*
+    Function that loads images from unsplash to HTML
+*/
+const loadElements = async (pageNumber, imagesPerFetch) => {
 
-    await addElements(pageNumber, imagesPerPage)
+    await addElements(pageNumber, imagesPerFetch)
     setTimeout(() => 
         {}, 2000)
 
-    for(let i = 0; i < imagesPerPage; i++) 
+    for(let i = 0; i < imagesPerFetch; i++) 
         
+    // Adding event listeners so users can click on the photo for full screen
     document.getElementById(`image${pageNumber}_${i}`).addEventListener("click", (e) => {
             
         let src = document.getElementById(`image${pageNumber}_${i}`).getAttribute("large")
@@ -118,20 +105,23 @@ const loadElements = async (pageNumber, imagesPerPage) => {
 
 }
 
+// On load, initial batch of images is downloaded
 window.onload = () => {
 
     document.getElementById("loading").classList.toggle("loading-hidden");
-    loadElements(1, 15)
+    loadElements(1, 30)
     setTimeout(() => {
         document.getElementById("loading").classList.toggle("loading-hidden");
     }, 2000)    
 }
 
+// When jump button is clicked, window is scrolled to the beginning
 document.getElementById("jump").addEventListener("click", () => {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 })
 
+// When user have scrolled to the bottom, new images are loaded
 let pageNumber = 2
 window.addEventListener("scroll", () => {
 
@@ -145,11 +135,11 @@ window.addEventListener("scroll", () => {
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         document.getElementById("loading").classList.toggle("loading-hidden");
-        loadElements(pageNumber, 15)
+        loadElements(pageNumber, 30)
+        pageNumber += 1
         setTimeout(() => {
             document.getElementById("loading").classList.toggle("loading-hidden");
         }, 2000) 
-        pageNumber += 1
     }
 })
 
