@@ -109,7 +109,7 @@ const loadElements = async (pageNumber, imagesPerFetch) => {
 window.onload = () => {
 
     document.getElementById("loading").classList.toggle("loading-hidden");
-    loadElements(1, 30)
+    loadElements(1, 15)
     setTimeout(() => {
         document.getElementById("loading").classList.toggle("loading-hidden");
     }, 2000)    
@@ -135,7 +135,7 @@ window.addEventListener("scroll", () => {
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         document.getElementById("loading").classList.toggle("loading-hidden");
-        loadElements(pageNumber, 30)
+        loadElements(pageNumber, 15)
         pageNumber += 1
         setTimeout(() => {
             document.getElementById("loading").classList.toggle("loading-hidden");
