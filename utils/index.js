@@ -19,7 +19,6 @@ const getImages = async (imagesPerFetch) => {
             return response.json();
         })
       .then( (data) => {
-        console.log(data);
         let information = {}
         for(let i = 0; i < imagesPerFetch; i++){
 
@@ -35,7 +34,6 @@ const getImages = async (imagesPerFetch) => {
                 userProfileImage: data[i].user.profile_image.large,
                 alt: data[i].alt_description ? data[i].alt_description : `Image of ${data[i].user.name}`
             }
-            console.log(information[i].alt);
         }
 
         return information
