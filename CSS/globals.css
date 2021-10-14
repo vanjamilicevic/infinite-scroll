@@ -368,5 +368,6 @@ textarea {
 body {
 
     font-family: "Montserrat";
+    overflow-x: hidden;
 }
 

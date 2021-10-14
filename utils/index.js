@@ -19,21 +19,23 @@ const getImages = async (imagesPerFetch) => {
             return response.json();
         })
       .then( (data) => {
-
+        console.log(data);
         let information = {}
         for(let i = 0; i < imagesPerFetch; i++){
 
             information[i] = {
                 id: data[i].id,
                 url: data[i].urls.thumb,
-                fullSize: data[i].urls.small,
+                fullSize: data[i].urls.regular,
                 likes: data[i].likes,
                 views: data[i].views,
                 downloads: data[i].downloads,
                 name: data[i].user.name,
                 username: data[i].username,
-                userProfileImage: data[i].user.profile_image.large
+                userProfileImage: data[i].user.profile_image.large,
+                alt: data[i].alt_description ? data[i].alt_description : `Image of ${data[i].user.name}`
             }
+            console.log(information[i].alt);
         }
 
         return information
@@ -61,7 +63,7 @@ const addElements = async (pageNumber, imagesPerFetch) => {
                     <p class="user-name">${data[i].name ? data[i].name : data[i].username}</p>
                 </section>
                 <hr/>
-                <img large=${data[i].fullSize} class="image" id="image${pageNumber}_${i}" src="${data[i].url}" />
+                <img large=${data[i].fullSize} class="image" id="image${pageNumber}_${i}" src="${data[i].url}" alt="Image of ${data[i].name}"/>
                 <section class="likes-downloads">
                     <p class="category">Views</p>
                     <p class="category">Likes</p>
