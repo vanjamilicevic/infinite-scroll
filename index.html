@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Linking CSS and Font Awesome -->
+    <link rel="stylesheet" href="./CSS/globals.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="./images/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>Infinite Scroll</title>
+</head>
+<body>
+
+    <!-- 
+        Header contains:
+        - Title
+        - Subtitle
+        - Button where layout can be changed
+    -->
+    <header class="header-container">
+    
+        <h1 class="header-title">Unlimited Images</h1>
+        <h2 class="header-subtitle">Infinite Scroll</h2>
+        <button class="change-layout" id="change-layout">List Layout</button>
+    </header>
+    
+    <!-- 
+        This div will be hidden beneath header - hence they are the same, 
+        it's goal is to move main content beneath fixed header
+    -->
+    <div class="spacing-div">
+        h1 class="header-title">Unlimited Images</h1>
+        <h2 class="header-subtitle">Infinite Scroll</h2>
+        <button class="change-layout">
+            List Layout
+        </button>
+    </div>
+
+    <main>
+
+        <section class="images-container" id="images-container">
+        </section>
+
+        <section class="jump" id="jump">
+            &nbsp;^&nbsp; 
+        </section>
+
+        <img 
+            class="loading loading-hidden" 
+            id="loading"
+            src="./images/loading.gif" 
+            alt="Loading icon"
+        />
+
+    </main>
+
+    <footer class="footer-container">
+        <button class="unsplash">Contact Us</button>
+        <i class="facebook-icon fab fa-facebook"></i>
+        <i class="twitter-icon fab fa-twitter"></i>
+    </footer>
+
+    <div class="full-size-image hidden" id="full-size-image">
+    </div>
+
+    <script src="./utils/index.js"></script>
+</body>
+</html>

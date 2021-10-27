@@ -1,0 +1,492 @@
+
+/*
+    Header consists out of:
+    - Title 
+    - Subtitle 
+*/
+.header-container {
+
+    
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2vw 0 3vw 0;
+
+    background-image: 
+        linear-gradient(
+        rgba(57, 49, 49, 0.7), 
+        rgba(57, 49, 49, 0.7)
+        ),
+        url("../images/My-Work.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    color: white;
+    text-align: center;
+}
+
+.header-title {
+
+    font-size: 52px;
+    letter-spacing: 3px;
+}
+
+.header-subtitle {
+
+    font-size: 18px;
+    letter-spacing: 3px;
+
+    margin: 1vh auto 2vw auto;
+}
+
+.change-layout {
+
+    background-color: #fe4066;
+    border-radius: 5px;
+    border: none;
+
+    color: white;
+    font-size: 18px;
+    font-family: "Montserrat";
+
+    padding: 2vh 3vw 2vh 3vw;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.35);
+}
+
+.change-layout:hover {
+
+    background-color: #fc748f;
+}
+
+/* 
+    Spacing div is there just so the content appears beneath fixed header
+*/
+.spacing-div {
+
+    width: 100vw;
+    padding: 2vw 0 3vw 0;
+
+    background-image: 
+        linear-gradient(
+        rgba(57, 49, 49, 0.7), 
+        rgba(57, 49, 49, 0.7)
+        ),
+        url("../images/My-Work.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    border: 1px solid black;
+}
+
+/* 
+    Loading class is used only during fetch API phase
+*/
+.loading {
+
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+
+    width: 50px;
+    height: 50px;
+}
+
+.loading-hidden {
+
+    display: none;
+}
+
+/* 
+    Images container can be grid or flex, depending on resolution
+*/
+.images-container {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 5vh;
+    justify-items: center;
+    margin-top: 8vh;
+}
+
+.images-container-list {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    padding: 10vh;
+    padding: 0 0 0 0;
+}
+
+/*
+    Styling image card
+*/
+
+.image-card {
+
+    background-color: #fe4066;
+    border-radius: 20px;
+
+    width: 85%;
+    height: 100%;
+}
+
+.avatar-and-name {
+
+    display: flex;
+}
+
+.avatar {
+
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+
+    margin-left: 10%;
+    margin-top: 2vw;
+}
+
+.user-name {
+
+    margin-left: 1.5vw;
+    margin-top: 5.5vh;
+
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.image {
+
+    display: block;
+    margin: 25px auto 0 auto;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.likes-downloads {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    width: 80%;
+    margin: 5vh auto 0 auto;
+    text-align: center;
+
+    border-top: 1px solid rgb(189, 182, 182);
+    padding-top: 1.5vh;
+    border-bottom: 1px solid rgb(189, 182, 182);
+    padding-bottom: 1.5vh;
+}
+
+hr {
+
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid rgb(189, 182, 182);
+
+    margin-top: 2vh;
+    width: 80%;
+
+}
+
+.category {
+
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.numbers {
+
+    color: white; 
+    margin-top: 0.5vh;
+    font-size: 13px;
+}
+
+.unsplash {
+
+    display: block;
+    width: 30%;
+    margin: auto;
+    padding: 1vw;
+    text-align: center;
+    border-radius: 5px;
+
+    margin-top: 2.2vh;
+    margin-bottom: 2.2vh;
+    background-color: white;
+
+    color: #fe4066;
+    text-decoration: none;
+}
+
+.unsplash:hover {
+
+    background-color: rgb(215, 205, 205);
+    cursor: pointer;
+}
+
+
+/* 
+    Jump button
+*/
+.jump {
+
+    position: fixed;
+    right: 5px;
+    bottom: 10px;
+
+    padding: 0.5vw;
+    color: white;
+    font-size: 12px;
+    background-color: #fe4066;
+    
+    border-radius: 100%;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.35);
+}
+
+.jump:hover {
+
+    background-color: #fc748f;
+    cursor: pointer;
+}
+
+.jump-before-footer {
+
+    position: fixed;
+    right: 5px;
+    bottom: 120px;
+}
+
+/* 
+    Footer
+*/
+.footer-container {
+
+    padding: 1.5vh 0 1.5vh 0;
+    background-color: #fe4066;;
+    color: white;
+    text-align: center;
+    
+    margin-top: 5vh;
+
+    display: grid;
+    grid-template-areas: 
+        "button button"
+        "facebook twitter";
+}
+
+.footer-container button {
+
+    grid-area: button;
+    width: 8vw;
+    margin: auto;
+    margin-bottom: 1vh;
+
+    border: none;
+    border-radius: 5px;
+}
+
+.footer-container .facebook-icon {
+
+    grid-area: facebook;
+    width: 2%;
+    margin-left: auto;
+    margin-right: 1vw;
+}
+
+
+.footer-container .twitter-icon {
+
+    grid-area: twitter;
+    width: 5%;
+    margin-right: auto;
+}
+
+.full-size-image {
+
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(57, 49, 49, 0.7);
+    text-align: center; 
+}
+
+.full-size-image img {
+
+    max-height: 90%;
+}
+
+.close {
+
+    color: white;
+    margin-right: 0;
+    text-align: right;
+    margin-top: 2vh;
+    /* margin-bottom: 2vh; */
+    margin-right: 2vw;
+}
+
+.close:hover{
+
+    color: #fc748f;
+    cursor: pointer;
+}
+
+.hidden {
+
+    display: none;
+}
+
+/* 
+    Media queries
+*/
+
+@media only screen and (max-width: 870px) {
+
+    html {
+
+        overflow-x: hidden;
+    }
+    body {
+
+        overflow-x: hidden;
+    }
+
+    .header-title{
+
+        font-size: 32px;
+    }
+
+    .images-container {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 5vh;
+        justify-items: center;
+        margin-top: 8vh;
+    }
+
+    .images-container-list {
+
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .avatar-and-name {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1vh;
+    }
+
+    .avatar-and-name img {
+
+        margin: auto;
+    }
+
+    .user-name {
+
+        font-size: 14px;
+        margin: auto;
+        margin-top: 1.5vh;
+    }
+
+    .image {
+
+        width: 90%;
+    }
+
+    .likes-downloads {
+
+        display: grid;
+        grid-template-areas: 
+            "views numberViews"
+            "likes numberLikes"
+            "downloads numberDownloads";
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .likes-downloads p:nth-child(1) {
+
+        grid-area: views;
+    }
+
+    .likes-downloads p:nth-child(2) {
+
+        grid-area: likes;
+    }
+
+    .likes-downloads p:nth-child(3) {
+
+        grid-area: downloads;
+    }
+
+    .likes-downloads p:nth-child(4) {
+
+        grid-area: numberViews;
+    }
+
+    .likes-downloads p:nth-child(5) {
+
+        grid-area: numberLikes;
+    }
+
+    .likes-downloads p:nth-child(6) {
+        
+        grid-area: numberDownloads;
+    }
+
+    .unsplash {
+
+        width: 70%;
+        font-size: 13px;
+    }
+
+    .category {
+
+        font-size: 12px;
+        color: white;
+    }
+
+    .numbers {
+
+        color: white; 
+        margin-top: 0.5vh;
+        font-size: 12px;
+    }
+
+    .footer-container button {
+
+        width: 28vw;
+    }
+
+    .footer-container .facebook-icon {
+
+        margin-right: 7vw;
+    }
+
+    .full-size-image img {
+
+        width: 80%;
+        margin-top: 10vh;
+    }
+
+}
+
+@media only screen and (max-width: 680px) {
+
+    .category{
+
+        margin-left: -10px;
+    }
+}
